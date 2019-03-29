@@ -1,0 +1,36 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Product Manager server."
+  version: "1.0.0"
+  title: "Swagger Product Manager"
+  
+
+host: "localhost : 3000"
+
+schemes:
+  -"http"
+
+paths:
+  get:
+    /categories:
+      tags:
+        - "brands"
+
+      summary: "Find all the brands"
+      operationId : "findAllCategories"
+
+      produces:
+        - "application.json"
+
+
+      respnses:
+        200:
+          description: "successful operation"
+          schema:
+            type : object
+
+
+
+
+
+
