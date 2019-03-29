@@ -13,6 +13,13 @@ app.get("/categories", function(req, res){
 	res.status(200).send(Object.keys(categories));
 });
 
+
+//all Products
+app.get("/allProducts", function(req, res){
+	//res.send(Object.keys(categories));
+	res.status(200).send(categories);
+});
+
 //Display a product
 app.get("/categories/:id", function(req,res){
 	var id = req.params.id;
@@ -76,7 +83,7 @@ app.post("/addProduct", function(req, res){
 			console.log(dic);
 			for (var k in dic){
 				if (k == id1){
-					res.send("Cannot add product with existing id");
+					res.status(404).send("Cannot add product with existing id");
 					flag = 1;
 					break;
 				}
@@ -92,7 +99,7 @@ app.post("/addProduct", function(req, res){
 		temp.push(dic1);
 		categories[brand1] = temp;
 		console.log(categories);
-		res.send(categories);
+		res.status(200).send(categories);
 	}
 });
 
@@ -125,7 +132,7 @@ app.put("/updateProduct", function(req, res){
 			for (var k in dic){
 				if (k == id1){
 					categories[br[i]][j][k] = arr1;
-					res.send(categories[br[i]][j][k]);
+					res.status(404).send(categories[br[i]][j][k]);
 					flag = 1;
 					break;
 				}
@@ -137,7 +144,7 @@ app.put("/updateProduct", function(req, res){
 
 
 	if(flag == 0){
-		res.send("No product found");
+		res.status(200).send("No product found");
 	}
 })
 

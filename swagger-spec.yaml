@@ -1,36 +1,163 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: "This is a sample server Product Manager server."
-  version: "1.0.0"
-  title: "Swagger Product Manager"
-  
-
-host: "localhost : 3000"
-
+  description: This is a sample server Product Manager server.
+  version: 1.0.0
+  title: Swagger Product Manager
+host: 'localhost:3000'
 schemes:
-  -"http"
-
+  - http
 paths:
-  get:
-    /categories:
+  /categories:
+    get:
       tags:
-        - "brands"
-
-      summary: "Find all the brands"
-      operationId : "findAllCategories"
-
+        - brands
+      summary: Find all the brands
+      operationId: findAllCategories
       produces:
-        - "application.json"
-
-
-      respnses:
-        200:
-          description: "successful operation"
+        - application.json
+      responses:
+        '200':
+          description: successful operation
           schema:
-            type : object
-
-
-
-
-
-
+            type: array
+            items:
+              type: string
+              
+  /allProducts:
+    get:
+      tags:
+        - brands
+      summary: Find all the brands
+      operationId: findAllProducts
+      produces:
+        - application.json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+    
+              
+  /categories/{productId}:
+    get:
+      tags:
+        - return by id
+      summary: returns the product with product id
+      operationId: findProductWithId
+      parameters:
+        - in: path
+          name: productId
+          description: ID of product to return
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: Unsuccessful operation
+          
+          
+  /addCategory:
+    post:
+      tags:
+        - create category
+      summary: Create category
+      description: ''
+      operationId: createCategory
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Created category object
+          required: true
+          schema:
+            type: object
+            properties:
+              categ: 
+                type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: string
+        '404':
+          description: Unsuccessful operation
+          
+  /addProduct:
+    post:
+      tags:
+        - add products
+        
+      summary: creating products
+      description: ''
+      operationId: createProducts
+      
+      parameters: 
+        - in: body
+          name : body
+          description: ""
+          required: true
+          schema:
+            type: "object"
+            properties:
+              categ: 
+                type: string
+              id:
+                type: number
+              product:
+                type: string
+              status:
+                type: string
+              price:
+                type: number
+              tax: 
+                type: number
+              addInfo:
+               type: string
+               
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: Unsuccessful operation
+          
+  /updateProduct:
+    put:
+      tags:
+        - add products
+        
+      summary: creating products
+      description: ''
+      operationId: updateProducts
+      
+      parameters: 
+        - in: body
+          name : body
+          description: ""
+          required: true
+          schema:
+            type: "object"
+            properties:
+              categ: 
+                type: string
+              id:
+                type: number
+              product:
+                type: string
+              status:
+                type: string
+              price:
+                type: number
+              tax: 
+                type: number
+              addInfo:
+               type: string
+               
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: Unsuccessful operation
+            
