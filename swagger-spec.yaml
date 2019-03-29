@@ -84,6 +84,8 @@ paths:
             type: string
         '404':
           description: Unsuccessful operation
+          schema:
+            type: string
           
   /addProduct:
     post:
@@ -100,28 +102,17 @@ paths:
           description: ""
           required: true
           schema:
-            type: "object"
-            properties:
-              categ: 
-                type: string
-              id:
-                type: number
-              product:
-                type: string
-              status:
-                type: string
-              price:
-                type: number
-              tax: 
-                type: number
-              addInfo:
-               type: string
+            $ref: '#/definitions/Product'
                
       responses:
         '200':
-          description: successful operation
+          description: ""
+          schema:
+            type: object
         '404':
-          description: Unsuccessful operation
+          description: ""
+          schema:
+            type: string
           
   /updateProduct:
     put:
@@ -138,26 +129,36 @@ paths:
           description: ""
           required: true
           schema:
-            type: "object"
-            properties:
-              categ: 
-                type: string
-              id:
-                type: number
-              product:
-                type: string
-              status:
-                type: string
-              price:
-                type: number
-              tax: 
-                type: number
-              addInfo:
-               type: string
+            $ref: '#/definitions/Product'
+            
                
       responses:
         '200':
-          description: successful operation
+          description: ""
+          schema:
+            type: object
         '404':
-          description: Unsuccessful operation
+          description: ""
+          schema:
+            type: string
+            
+definitions:
+  Product:
+    type: "object"
+    properties:
+      categ: 
+        type: string
+      id:
+        type: number
+      product:
+        type: string
+      status:
+        type: string
+      price:
+        type: number
+      tax: 
+        type: number
+      addInfo:
+       type: string
+
             

@@ -132,7 +132,7 @@ app.put("/updateProduct", function(req, res){
 			for (var k in dic){
 				if (k == id1){
 					categories[br[i]][j][k] = arr1;
-					res.status(404).send(categories[br[i]][j][k]);
+					res.status(200).send(categories[br[i]][j][k]);
 					flag = 1;
 					break;
 				}
@@ -144,7 +144,7 @@ app.put("/updateProduct", function(req, res){
 
 
 	if(flag == 0){
-		res.status(200).send("No product found");
+		res.status(404).send("No product found");
 	}
 })
 
